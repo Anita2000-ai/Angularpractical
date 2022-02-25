@@ -15,8 +15,6 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onUsers(){
-    this.router.navigate(['/users-table'])
-  }
+ 
 
 }

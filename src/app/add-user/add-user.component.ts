@@ -1,5 +1,7 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-add-user',
@@ -8,26 +10,45 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddUserComponent implements OnInit {
 
-    userForm: FormGroup=new FormGroup({});
+  userForm: FormGroup=new FormGroup({}); 
+
   constructor(
-    private form: FormBuilder
-  ) {
-
-   }
-   
-   onAddUser(){
-
-  }
+    private userService: UserService,
+    private formBuilder: FormBuilder,
+    private location: Location
+  ) { }
 
   ngOnInit(): void {
-    this.userForm = this.form.group({
-      userFirstName: [undefined, Validators.required],
-      Email: [undefined, Validators.required],
-      Password:[undefined,Validators.required],
-      MobileNumber:[undefined,Validators.required]
+    this.initForm();
+    
+  }
 
+  get forms(): { [key: string]: AbstractControl } {
+    return this.userForm.controls;
+  }
+
+  initForm() {
+    this.userForm = this.formBuilder.group({
+      name:[undefined],
+      email:[undefined],
+      password:[undefined],
+      mobileNumber:[undefined],
     });
-  
+  }
+
+  onAddUser(user: any) {
+    console.log(user);
+    this.userService.addUsers(user).subscribe(
+      (response: any) => {
+        console.log(response);
+      }, error => {
+        console.error(error);
+      }
+    );
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

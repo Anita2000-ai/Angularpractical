@@ -2,39 +2,55 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddUserComponent } from './add-user/add-user.component';
 import { DeleteTableComponent } from './delete-table/delete-table.component';
-import { DetailViewComponent } from './detail-view/detail-view.component';
+import { DetailViewComponent } from './detailview/detailview.component';
 import { EditTableComponent } from './edit-table/edit-table.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UsersTableComponent } from './users-table/users-table.component';
 import { UsersComponent } from './users/users.component';
 
+
 const routes: Routes = [
   {
-    path:'users',
-    component:UsersComponent
+    path: '',
+    redirectTo: '/users',
+    pathMatch: 'full'
   },
-{
-  path:'users-table',
-  component:UsersTableComponent
-},
+  {
+    path: 'users',
+    component: UsersComponent,
+    children: [
+      {
+        path: 'users-table',
+        component: UsersTableComponent,
+      },
 
-{ 
-  path:'edit-table',
-  component:EditTableComponent
-},
+      {
+        path: 'detail-view/:id',
+        component: DetailViewComponent,
+      },
 
-{
-  path:'delete-table',
-  component:DeleteTableComponent
-},
+      {
+        path: 'add-user',
+        component: AddUserComponent,
+      },
 
-{
-  path:'add-user',
-  component:AddUserComponent
-},
-{
-  path:'detail-view',
-  component:DetailViewComponent
-}
+
+      {
+        path: 'edit-table/:id',
+        component: EditTableComponent,
+      },
+
+      {
+        path: 'delete-table',
+        component: DeleteTableComponent,
+      },
+
+    ]
+  },
+
+  {
+    path: '**', component: PageNotFoundComponent //wild card routing
+  }
 
 ];
 

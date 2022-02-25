@@ -10,18 +10,25 @@ import { EditTableComponent } from './edit-table/edit-table.component';
 import { DeleteTableComponent } from './delete-table/delete-table.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DetailViewComponent } from './detail-view/detail-view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TableComponent } from './table/table.component';
+import { DetailViewComponent } from './detailview/detailview.component';
+import { DetailsViewComponent } from './details-view/details-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
+    DetailViewComponent,
     UsersTableComponent,
     EditTableComponent,
     DeleteTableComponent,
     AddUserComponent,
-    DetailViewComponent
+    DetailViewComponent,
+    PageNotFoundComponent,
+    TableComponent,
+    DetailsViewComponent
   ],
   imports: [
     BrowserModule,

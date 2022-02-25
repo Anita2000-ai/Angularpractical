@@ -53,19 +53,21 @@ export class UsersTableComponent implements OnInit {
   
   
   onAddUser(){
-    this.router.navigate(['/add-user'])
+    this.router.navigate(['/users/add-user'])
   }
 
-  onEdit(){
-    this.router.navigate(['/edit-table'])
+  onEdit(id: any){
+    this.router.navigate(['/users/edit-table',id]);
   }
 
   onDelete(){
-    this.router.navigate(['/delete-table'])
+    this.router.navigate(['/users/delete-table'])
   }
  
-  onView(){
-    this.router.navigate(['/detail-view'])
+  onView(id: string,paramName: string,age: number){
+    this.router.navigate(['/users/detail-view',id],{
+      queryParams: {name:paramName, age: age}
+    })
   }
 
 }

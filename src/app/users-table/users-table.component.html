@@ -1,4 +1,4 @@
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
 <app-users></app-users>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
@@ -24,7 +24,7 @@
 
         <td>
             <!-- <input type="button" class="btn bg-secondary text-white" value="edit" (click)="onEdit();"> -->
-            <button  class="btn bg-secondary text-white" value="edit" (click)="onEdit()"> <i class="fa fa-pencil-square"></i> Edit
+            <button  class="btn bg-secondary text-white" value="edit" (click)="onEdit(data.id)"> <i class="fa fa-pencil-square"></i> Edit
             </button>
             </td>
             <td>
@@ -33,7 +33,7 @@
         </td>  
         <td>
             <!-- <input type="button" class="btn bg-secondary text-white"value="delete"(click)="onDelete();"> -->
-            <button  class="btn bg-secondary text-white" value="view" (click)="onView()"><i class="fa fa-eye"></i>View</button>
+            <button  class="btn bg-secondary text-white" value="view" (click)="onView(data.id, data.name,data.age)"><i class="fa fa-eye"></i>View</button>
         </td>  
     </tr>
 </table>
